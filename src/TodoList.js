@@ -1,4 +1,5 @@
 import React from "react"; // Import React from "react" npm package
+import TodoListItem from './TodoListItem'; // Import TodoListItem
 
 // Create array and store it in a variable named todoList
 const todoList = [
@@ -11,15 +12,14 @@ const todoList = [
 
 // Declare a function named TodoList
 function TodoList() {
-  // Add a multi-line return statement with JSX
-    return (
-// Create an unordered list (<ul>)//
-<ul> 
-{todoList.map(function (item){
-return <li key={item.id}>{item.title}</li>;
-})}
-</ul>
-    );
+    return ( // Add a multi-line return statement with JSX
+        <ul> {/* Create an unordered list (<ul>)//</ul>*/}
+         {todoList.map((item) => { {/* Inside the map method, use the TodoListItem component */}
+            return (
+            <TodoListItem key={item.id} todo={item} /> // Pass key as a prop equal to the id of the todo object. Pass todo as a prop.
+            );
+         })}
+        </ul>
+);
 }
-
 export default TodoList;// Export TodoList function as the default module
