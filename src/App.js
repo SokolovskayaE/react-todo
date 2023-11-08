@@ -2,14 +2,18 @@ import React, { useState } from 'react'; // Import React from "react" npm packag
 import TodoList from "./TodoList"; // Import the TodoList component
 import AddTodoForm from "./AddTodoForm"; // Import AddTodoForm
 
+
 function App() {
-    const [newTodo, setNewTodo] = useState (""); //Create a new state variable named newTodo with update function named setNewTodo
+    const [todoList, setTodoList] = useState([]); // Create a new state variable named todoList with setter setTodoList and default value of an empty array
+
+    function addTodo(newTodo) { // Function named addTodo that takes newTodo as a parameter 
+       setTodoList([...todoList, newTodo]);
+    }
     return (
         <div>
         <h1>Todo List</h1> {/*Create a level-one heading that says "Todo List"*/}
-        <TodoList /> {/*TodoList component*/}
-        <AddTodoForm onAddTodo={setNewTodo}  /> {/*AddTodoForm component + Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component*/}
-        <p>{newTodo}</p> {/*Add a paragraph element that displays the value of newTodo variable*/}
+        <TodoList todoList={todoList} /> {/*TodoList component + Pass todoList as a prop named todoList to the TodoList component*/}
+        <AddTodoForm onAddTodo={addTodo} /> {/*AddTodoForm component*/}
         </div>
     );
 }
