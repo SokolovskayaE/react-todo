@@ -20,7 +20,7 @@ function AddTodoForm( { onAddTodo }) {
     }
     return ( //Add a multi-line return statement to your AddTodoForm function//
     <form onSubmit={handleAddTodo}> {/*Create a <form> element + Add onSubmit prop to <form> element and pass the handleAddTodo function by reference*/}
-        <label htmlFor="todoTitle">Title</label> {/*Add htmlFor attribute to <label> element with id "todoTitle"*/}
+        <label htmlFor="todoTitle">Title:</label> {/*Add htmlFor attribute to <label> element with id "todoTitle"*/}
         <input id="todoTitle" type="text" name="title" value={todoTitle} onChange={handleTitleChange}/> {/*Create a text <input> element with id "todoTitle" + Add a name attribute to the text input with value title + Add value prop equal to todoTitle from component props*/}
         <button type="submit">Add</button> {/*Create a submit <button> element with text "Add"*/}
     </form>
