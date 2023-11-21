@@ -21,12 +21,16 @@ function App() {
     function addTodo(newTodo) { // Function named addTodo that takes newTodo as a parameter 
        setTodoList([...todoList, newTodo]);
     }
+    function removeTodo(id) { // Define a new handler function named removeTodo with parameter id
+        const updatedTodoList = todoList.filter(todo => todo.id !== id);
+        setTodoList(updatedTodoList); // Call the setTodoList state setter and pass the new or modified Array
+    }
 
     return (
         <> 
             <h1>Todo List</h1> {/*Create a level-one heading that says "Todo List"*/}
             <AddTodoForm onAddTodo={addTodo} /> {/*AddTodoForm component*/}
-            <TodoList todoList={todoList} /> {/*TodoList component + Pass todoList as a prop named todoList to the TodoList component*/}
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo} /> {/*TodoList component + Pass todoList as a prop named todoList to the TodoList component* + Pass removeTodo as a callback handler prop named onRemoveTodo to the TodoList component*/}
         </>
     );
 }
