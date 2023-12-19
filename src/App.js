@@ -11,7 +11,7 @@ function App() {
             setTimeout(() => { //callback: function with no parameters
                 resolve({ //Inside the timeout callback function, call the parameter resolve which is a callback function for when the Promise is successful and pass it an Object with property data as a nested empty Object
                     data: {
-                        todoList: JSON.parse(localStorage.getItem('savedTodoList')) 
+                        todoList: JSON.parse(localStorage.getItem('savedTodoList')) || []
                     }
                 });
             }, 2000); // delay time: 2000 milliseconds
