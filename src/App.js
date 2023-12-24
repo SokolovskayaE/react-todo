@@ -5,23 +5,38 @@ import AddTodoForm from "./AddTodoForm"; // Import AddTodoForm
 function App() {
     const [todoList, setTodoList] = useState([]); // Create a new state variable named todoList with setter setTodoList
     const [isLoading, setIsLoading] = useState (true); // create a new state variable named isLoading with update function named setIsLoading with default value true
-    
-    useEffect(() => { // useEffect React hook with an empty dependency list
-        const TimeOutPromise = new Promise((resolve, reject) => { //Inside the side-effect handler function, define a new Promise and pass in a callback function with parameters resolve and reject
-            setTimeout(() => { //callback: function with no parameters
-                resolve({ //Inside the timeout callback function, call the parameter resolve which is a callback function for when the Promise is successful and pass it an Object with property data as a nested empty Object
-                    data: {
-                        todoList: JSON.parse(localStorage.getItem('savedTodoList')) || []
-                    }
-                });
-            }, 2000); // delay time: 2000 milliseconds
-        });
-        TimeOutPromise.then(result => {  // Chain a then method to your Promise constructor and pass it a function with parameter result
-            setTodoList(result.data.todoList); // Inside the function, use your state setter to update the list and pass the todoList from your result object
-            setIsLoading(false); 
-        });
-    }, []);
-     
+
+const fetchData = async() => { // Create a new async function fetchData
+const options = { // Inside the fetchData function, declare an empty object variable named options
+    method: "GET", // Add a method key with the value 'GET'
+    headers: { Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+      },
+    };
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+
+try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const todos = data.records.map((record) => ({
+      title: record.fields.title,
+      id: record.id
+    }));
+ 
+  setTodoList(todos); // Set the application's todoList
+  setIsLoading(false); // Set isLoading to false to indicate the fetch is complete
+
+} catch (error) {
+  console.log("Error fetching data: ", error);
+}
+};
+    useEffect(() => {
+        fetchData();
+      }, []);
+
     useEffect(() => { // Define a useEffect React hook with todoList as a dependency.
         if (!isLoading) {
         localStorage.setItem('savedTodoList', JSON.stringify(todoList)); //Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList" + Convert todoList to a string before saving in localStorage
