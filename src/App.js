@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Import React from "react" npm package
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoList from "./TodoList"; // Import the TodoList component
 import AddTodoForm from "./AddTodoForm"; // Import AddTodoForm
 
@@ -51,15 +52,25 @@ try {
         const updatedTodoList = todoList.filter(todo => todo.id !== id);
         setTodoList(updatedTodoList); // Call the setTodoList state setter and pass the new or modified Array
     }
-
-    return (
-        <> 
-            <h1>Todo List</h1> {/*Create a level-one heading that says "Todo List"*/}
-            <AddTodoForm onAddTodo={addTodo} /> {/*AddTodoForm component*/}
-            {isLoading ? <p>Loading...</p>: // Create a new paragraph element above TodoList with text "Loading..."
-            <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-            } 
-        </>
-    );
+return (
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={
+      <>
+        <h1>Todo List</h1>
+        <AddTodoForm onAddTodo={addTodo} />
+          {isLoading ? <p>Loading...</p> :
+          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        }
+      </>
+    }
+    />
+    <Route path="/new" element={
+        <h1>New Todo List</h1>
+    }
+    />
+  </Routes>
+</BrowserRouter>
+);
 }
 export default App; // Export App function as the default module
