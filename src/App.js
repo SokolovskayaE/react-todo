@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'; // Import React from "react" npm package
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TodoList from "./TodoList"; // Import the TodoList component
-import AddTodoForm from "./AddTodoForm"; // Import AddTodoForm
+import TodoList from "./TodoList"; 
+import AddTodoForm from "./AddTodoForm"; 
+import styles from "./App.module.css";
+
 
 function App() {
     const [todoList, setTodoList] = useState([]); // Create a new state variable named todoList with setter setTodoList
@@ -53,13 +55,14 @@ try {
         setTodoList(updatedTodoList); // Call the setTodoList state setter and pass the new or modified Array
     }
 return (
+  <div className={styles.container}>
 <BrowserRouter>
   <Routes>
     <Route path="/" element={
       <>
-        <h1>Todo List</h1>
+        <h1 className={styles.header}>ToDo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
-          {isLoading ? <p>Loading...</p> :
+          {isLoading ? <p className={styles.loadingMessage}>Loading...</p> :
           <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
         }
       </>
@@ -71,6 +74,7 @@ return (
     />
   </Routes>
 </BrowserRouter>
+</div>
 );
 }
-export default App; // Export App function as the default module
+export default App; 
