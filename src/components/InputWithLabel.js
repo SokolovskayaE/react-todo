@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import styles from "./inputWithLabel.module.css";
+import PropTypes from "prop-types";
 
 const InputWithLabel = (props) => {
     const inputRef = useRef(); // Create a ref named inputRef
@@ -21,6 +22,16 @@ const InputWithLabel = (props) => {
        />
     </>
   );
+};
+
+InputWithLabel.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  isFocused: PropTypes.bool,
 };
 
 export default InputWithLabel;
