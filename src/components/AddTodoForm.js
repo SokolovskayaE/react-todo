@@ -1,6 +1,7 @@
 import React, { useState } from "react"; 
 import InputWithLabel from './InputWithLabel';
 import styles from './AddTodoForm.module.css';
+import PropTypes from "prop-types";
 
 function AddTodoForm( { onAddTodo }) { 
     const [todoTitle, setTodoTitle] = useState(""); // Create a new state variable named todoTitle with a setter setTodoTitle
@@ -35,4 +36,8 @@ function AddTodoForm( { onAddTodo }) {
     </form>
     );
 }
+// Define a property with key onAddTodo (prop name) and value PropTypes.func
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func.isRequired
+};
 export default AddTodoForm;
