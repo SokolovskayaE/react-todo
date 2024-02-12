@@ -1,5 +1,6 @@
-import React, { useState } from "react"; // Import React from "react" npm package
+import React, { useState } from "react"; 
 import InputWithLabel from './InputWithLabel';
+import styles from './AddTodoForm.module.css';
 
 function AddTodoForm( { onAddTodo }) { 
     const [todoTitle, setTodoTitle] = useState(""); // Create a new state variable named todoTitle with a setter setTodoTitle
@@ -20,7 +21,7 @@ function AddTodoForm( { onAddTodo }) {
         setTodoTitle(""); // Remove the reset() method and replace it with logic to reset the todoTitle state to an empty String
     }
     return ( //Add a multi-line return statement to your AddTodoForm function//
-    <form onSubmit={handleAddTodo}> {/*Create a <form> element + Add onSubmit prop to <form> element and pass the handleAddTodo function by reference*/}
+    <form className={styles.todoForm} onSubmit={handleAddTodo}> {/*Create a <form> element + Add onSubmit prop to <form> element and pass the handleAddTodo function by reference*/}
       <InputWithLabel 
         htmlFor="todoTitle" 
         inputName="title" 
@@ -30,8 +31,8 @@ function AddTodoForm( { onAddTodo }) {
       >
         Title: 
       </InputWithLabel>
-    <button type="submit">Add</button> {/*Create a submit <button> element with text "Add"*/}
+    <button type="submit" className={styles.addButton}>Add</button> {/*Create a submit <button> element with text "Add"*/}
     </form>
     );
 }
-export default AddTodoForm; // Export AddTodoForm function as the default module
+export default AddTodoForm;

@@ -1,16 +1,20 @@
-import React from "react"; // Import React from "react" npm package
+import React from "react";
+import styles from "./TodoListItem.module.css";
 
 function TodoListItem({ todo, onRemoveTodo }) { 
-    return (     
-        <li>
+    return (
+      <div className={styles.container}>     
+        <li className={styles.listItem}>
             {todo.title}
+        </li>
             <button 
                 type="button" 
                 onClick={() => onRemoveTodo(todo.id)}
+                className={styles.buttonItem}
             >
                 Remove
             </button>
-        </li>
+      </div>
     );
 }
-export default TodoListItem;// Export TodoListItem function as the default module
+export default TodoListItem;

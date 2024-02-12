@@ -1,0 +1,37 @@
+/* Apply styles to the title */
+.label {
+    color: #044a42; 
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Marvel', sans-serif;
+    margin-right: 10px; /* Add margin to separate from the input */
+}
+/* Apply styles to the field */
+.input {
+    padding: 10px; 
+    font-size: 20px;
+    border-radius: 6px; 
+    outline: none; /*Removes the border that appears around the input when it is selected*/
+    color: #044a42;
+    width: 250px;
+    margin-right: 10px; /* Add margin to separate from the button */
+}
+/* Media queries */
+@media (max-width: 767px) {
+    .label {
+        font-size: 30px; /* Adjust font size for mobile */
+    }
+    .input {
+        font-size: 16px; /* Adjust font size for mobile */
+        width: 80%; /* Adjust width for mobile */
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .label {
+        font-size: 40px; /* Adjust font size for tablets */
+    }
+    .input {
+        font-size: 18px; /* Adjust font size for tablets */
+        width: 70%; /* Adjust width for tablets */
+    }
+}

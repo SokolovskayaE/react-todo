@@ -1,0 +1,55 @@
+/* Apply styles to the body */
+body {
+    background: #b8e1dd;
+    display: flex;
+    flex-direction: column;
+}
+/* Apply styles to the header ToDo List*/
+.header {
+    color: #062925;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 3.5rem;
+}
+/* Apply styles to Loading */
+.loadingMessage {
+    font-size: 2rem;
+    color: #062925;
+    text-align: center;
+}
+/* Apply styles to Background */
+.container {
+    background-image: url('./vectorstock_47162472.png'); 
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/* Media query for mobile devices (up to 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding: 10px; /* Adjust padding for mobile */
+    }
+    .header {
+        font-size: 2rem; /* Adjust font size for mobile */
+    }
+}
+/* Media query for tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 20px; /* Adjust padding for tablets */
+    }
+    .header {
+        font-size: 3rem; /* Adjust font size for tablets */
+    }
+}
+/* Media query for desktops (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .container {
+        padding: 40px; /* Set padding for desktops */
+    }
+    .header {
+        font-size: 3.5rem; /* Set font size for desktops */
+    }
+}
