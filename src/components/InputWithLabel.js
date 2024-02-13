@@ -23,12 +23,8 @@ const InputWithLabel = (props) => {
     </>
   );
 };
-
+// Define propTypes for InputWithLabel
 InputWithLabel.propTypes = {
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   isFocused: PropTypes.bool,
