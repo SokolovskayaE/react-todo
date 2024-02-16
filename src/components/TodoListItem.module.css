@@ -25,6 +25,29 @@
 }
 .buttonItem:hover {
     background-color: #3a9188;
+
+
+
+/* Apply styles to the Sort button */
+.sortButton {
+    padding: 6px;
+    margin: 3px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #044a42;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Marvel', sans-serif;
+}
+
+.sortButton:hover {
+    background-color: #3a9188;
+}
+
+
+
+
 }
 /* Media queries */
 @media (max-width: 767px) {
