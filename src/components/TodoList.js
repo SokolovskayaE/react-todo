@@ -1,6 +1,7 @@
 import React from "react"; 
 import TodoListItem from './TodoListItem'; 
 import styles from "./TodoList.module.css";
+import PropTypes from "prop-types";
 
 function TodoList({ todoList, onRemoveTodo }) {  // Declare a function named TodoList + Add props as a parameter to the TodoList functional component
     return ( // Add a multi-line return statement with JSX
@@ -11,4 +12,14 @@ function TodoList({ todoList, onRemoveTodo }) {  // Declare a function named Tod
         </ul>
     );
 }
+// Define propTypes for TodoList
+TodoList.propTypes = {
+    todoList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+    ),
+    onRemoveTodo: PropTypes.func.isRequired,
+  }
 export default TodoList;

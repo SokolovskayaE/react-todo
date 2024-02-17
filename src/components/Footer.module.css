@@ -1,0 +1,12 @@
+.footer {
+    font-size: 40px;
+    font-family: 'Marvel', sans-serif;
+    font-weight: bolder;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+

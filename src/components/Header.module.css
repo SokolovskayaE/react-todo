@@ -1,0 +1,26 @@
+.header {
+  padding: 10px; 
+}
+  
+  .header ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox to align items */
+  }
+  
+  .header ul li {
+    margin-right: 15px;
+  }
+  
+  .header ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #062925; 
+    font-size: 35px;
+    font-family: 'Marvel', sans-serif;
+    font-weight: bolder;
+  }
+  
+  .header ul li a:hover {
+    color: #3a9188; /* Change text color on hover */
+  }
+  

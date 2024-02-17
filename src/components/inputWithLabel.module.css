@@ -1,10 +1,14 @@
+.container {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center align items vertically */
+  }
 /* Apply styles to the title */
 .label {
     color: #044a42; 
     font-size: 50px;
     font-weight: bold;
     font-family: 'Marvel', sans-serif;
-    margin-right: 10px; /* Add margin to separate from the input */
+    margin-right: 20px; /* Add margin to separate from the input */
 }
 /* Apply styles to the field */
 .input {

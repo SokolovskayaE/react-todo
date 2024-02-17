@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoList from "./components/TodoList"; 
 import AddTodoForm from "./components/AddTodoForm"; 
 import styles from "./App.module.css";
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Header from './components/Header';
 
 function App() {
     const [todoList, setTodoList] = useState([]); // Create a new state variable named todoList with setter setTodoList
@@ -25,18 +28,6 @@ const options = { // Inside the fetchData function, declare an empty object vari
     }
     const data = await response.json();
 
-    //data.records.sort((objectA, objectB) => { //Sorting descending
-      //const titleA = objectA.fields.title.toUpperCase();
-      //const titleB = objectB.fields.title.toUpperCase();
-      //if (titleA < titleB) {
-          //return 1; // Return 1 if "Title A" is less than "Title B"
-      //}
-      //if (titleA > titleB) {
-          //return -1; // Return -1 if "Title A" is greater than "Title B"
-      //}
-      //return 0; // Return 0 if "Title A" and "Title B" are the same
-    // });
-
     const todos = data.records.map((record) => ({
       title: record.fields.title,
       id: record.id
@@ -50,11 +41,9 @@ const options = { // Inside the fetchData function, declare an empty object vari
 }, [sortOrder]); 
 
 const toggleSortOrder = () => { // Toggle sort order between 'asc' and 'desc'
-  //console.log("Toggle button clicked");
   const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
   setSortOrder(newSortOrder);
-  //console.log("New Sort Order:", newSortOrder);
-};
+ };
 useEffect(() => { // Update the todo list when sortOrder changes
   fetchData();
 }, [fetchData]); 
@@ -87,10 +76,6 @@ const addTodo = async (newTodo) => { // Add a newTodo
       return null;
     }
   }
-    //useEffect(() => {
-      //  fetchData();
-     // }, []);
-
     useEffect(() => { // Define a useEffect React hook with todoList as a dependency.
         if (!isLoading) {
         localStorage.setItem('savedTodoList', JSON.stringify(todoList)); //Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList" + Convert todoList to a string before saving in localStorage
@@ -125,28 +110,38 @@ const removeTodo = async (id) => { // Remove a todo from the local storage and u
 };
 
 return (
-  <div className={styles.container}>
-<BrowserRouter>
-  <Routes>
-    <Route path="/" element={
-      <>
-        <h1 className={styles.header}>ToDo List</h1>
-        <button onClick={toggleSortOrder} className={styles.sortButton}>Sort Order</button>
-        <AddTodoForm onAddTodo={addTodo} />
-          {isLoading ? <p className={styles.loadingMessage}>Loading...</p> :
-          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-        }
-      </>
-    }
-    />
-    <Route path="/new" element={
-        <h1>New Todo List</h1>
-    }
-    />
-  </Routes>
-</BrowserRouter>
-</div>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <Header />
+          <div >
+            <Home />
+          </div>
+          <Footer />
+        </>
+      }
+      />
+      <Route path="/todos" element={
+        <>
+          <Header />
+             <div className={styles.container}>
+            <h1 className={styles.header}>Todo List</h1>
+            <AddTodoForm onAddTodo={addTodo} />
+              <div className={styles.sortButtonContainer}>
+              <button onClick={toggleSortOrder} className={styles.sortButton}>Sort Order</button>
+              </div>
+            {isLoading ? <p className={styles.loadingMessage}>Loading...</p> :
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+              }
+            </div>
+          <Footer />
+        </>
+      }
+      />
+    </Routes>
+  </BrowserRouter>
 );
 }
 
-export default App; 
+export default App;
