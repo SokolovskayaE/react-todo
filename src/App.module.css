@@ -1,28 +1,38 @@
 /* Apply styles to the body */
 body {
-    background: #b8e1dd;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
+/* Apply styles to Background */
+.container {
+  background-size: cover;
+  background: #67d4c9; 
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #b8e1dd; 
+}
+ 
 /* Apply styles to the header ToDo List*/
 .header {
+    
     color: #062925;
     font-weight: bolder;
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 
-.container {
+.sortButtonContainer {
     display: flex;
-    justify-content: center; /* Horizontally center the items */
-    align-items: center; /* Vertically center the items */
-    flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
-}
+    justify-content: center;
+  }
 
-/* Apply styles to sort button*/
 .sortButton {
     padding: 6px;
-    margin: 3px;
     font-size: 20px;
     color: #fff;
     background-color: #044a42;
@@ -42,15 +52,7 @@ body {
     color: #062925;
     text-align: center;
 }
-/* Apply styles to Background */
-.container {
-    background-image: url('./vectorstock_47162472.png'); 
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+
 /* Media query for mobile devices (up to 767px) */
 @media (max-width: 767px) {
     .container {

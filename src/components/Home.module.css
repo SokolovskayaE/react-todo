@@ -1,0 +1,55 @@
+/* CSS for centering the content and adjusting text size */
+.container {
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  text-align: center; /* Align text to the right */
+  background-image: url('./vectorstock_47162472.png');
+}
+
+h1 {
+  font-size: 3rem; /* Increase font size for headings */
+  margin-bottom: 10px; /* Add some bottom margin for separation */
+  font-family: 'Marvel', sans-serif;
+  font-weight: bolder;
+  color:#062925;
+}
+
+h2 {
+  font-size: 2rem; /* Increase font size for headings */
+  margin-bottom: 10px; /* Add some bottom margin for separation */
+  font-family: 'Marvel', sans-serif;
+  font-weight: bolder;
+  color:#062925;
+}
+
+p {
+  font-size: 2rem;
+  margin: 10px 0; /* Add some vertical margin for paragraphs */
+  font-family: 'Marvel', sans-serif;
+  color:#044a42;
+}
+
+.featureList li {
+  list-style: none;
+  font-size: 1.5rem;
+  font-family: 'Marvel', sans-serif;
+  color:#044a42;
+  text-align: center;
+}
+
+/* Style the link */
+a {
+  text-decoration: none; /* Remove underline from links */
+  color: #062925; 
+  font-size: 2rem;
+  font-family: 'Marvel', sans-serif;
+  font-weight: bolder;
+}
+
+a:hover {
+  color: #3a9188; /* Change text color on hover */
+}

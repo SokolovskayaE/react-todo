@@ -9,7 +9,7 @@ const InputWithLabel = (props) => {
     }, []);
   
     return (
-    <>
+    <div className={styles.container}>
       <label htmlFor={props.htmlFor} className={styles.label}>{props.children}</label> 
       <input
         ref={inputRef} // Add a ref prop with value inputRef on the input element
@@ -20,7 +20,7 @@ const InputWithLabel = (props) => {
         onChange={props.onChange}
         className={styles.input}
        />
-    </>
+    </div>
   );
 };
 // Define propTypes for InputWithLabel
